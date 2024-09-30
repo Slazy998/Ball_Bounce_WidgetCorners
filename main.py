@@ -147,8 +147,8 @@ class MainBoxLayout(BoxLayout):
 class MainWidget(Widget):
     pass
 
-class TheLabApp(App):
+class infra(App):
     pass
 
 if __name__ == "__main__":
-    TheLabApp().run()
+    infra().run()
