@@ -1,0 +1,176 @@
+Ball_bounce:
+#:set s dp(200)
+
+<Ball_bounce>:
+
+<Rect_Move>:
+    GridLayout:
+        cols:3
+        rows:2
+        size_hint: 1, 1
+        spacing:5
+        size:200,200
+        Label:
+            text:""
+        Button:
+            text:"Up"
+            on_press:root.on_click_up()
+        Label:
+            text:""
+        Button:
+            text:"Left"
+            on_press:root.on_click_left()
+        Button:
+            text:"Down"
+            on_press:root.on_click_down()
+        Button:
+            text:"Right"
+            on_press:root.on_click_right()
+
+
+<CanvasExample1>:
+    canvas:
+        Line:
+            points:(self.width/2,0,self.width/2,self.height)
+            width:2
+        Line:
+            width:2
+            points:(0,self.height/2,self.width,self.height/2)
+        Color:
+            rgba:1,0,0,1
+        Line:
+            width:2
+            ellipse:(200,300,200,100)
+        Line:
+            width:2
+            circle:(300,200,100)
+
+
+<CanvasExample>:
+    canvas:
+        Rectangle:
+            pos:self.center_x-s/2,self.center_y-s/2
+            size:s,s
+        Ellipse:
+            pos:self.center_x,self.center_y
+            size:s,s/2
+        Line:
+            points:(0,0,100,100,200,0)
+            width:2
+
+<ImageWidget@GridLayout>:
+    cols:1
+    Image:
+        source:"resources_kivy/RESOURCES_KIVY/1_THE_LAB/2_the_lab_widgets/images/cake.jpg"
+        allow_stretch: True
+
+<ButtonClick>:
+    cols:3
+    ToggleButton:
+        text:root.checker
+        on_state:root.toggle_track(self)
+        size_hint:None,1
+    Button:
+        text:"Click Me"
+        on_press:root.on_click_progress()
+        disabled:root.valid_count
+
+    Label:
+        text:root.my_text
+        font_name:'resources_kivy/RESOURCES_KIVY/1_THE_LAB/2_the_lab_widgets/fonts/Lcd.ttf'
+        font_size:80
+        color: .4,.8,.8,1
+    Switch:
+        id:my_switch
+        on_active:root.on_switch_valid(self)
+        size_hint:None,1
+    Slider:
+        id:my_slider
+        disabled:True if my_switch.active == False else False
+        min:0
+        max:100
+        orientation:"vertical"
+        on_value:root.on_slider_value(self)
+
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text: root.slider_label
+            font_name:'resources_kivy/RESOURCES_KIVY/1_THE_LAB/2_the_lab_widgets/fonts/Lcd.ttf'
+            font_size:80
+            color: .4,.8,.8,1
+        ProgressBar:
+            max:100
+            value:my_slider.value
+
+    TextInput:
+        size_hint: None, 1
+        width: "100dp"
+        text: "foo"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: "Your name is: " + root.text_input_str
+
+<MainPageLayout@PageLayout>:
+    MainWidget:
+    MainGridLayout:
+    MainBoxLayout:
+    MainAnchorLayout:
+
+<MainScrollLayout>:
+    MainStackLayout:
+        size_hint:1,None
+        height:self.minimum_height
+
+<MainStackLayout>:
+
+
+<MainGridLayout>:
+    cols:3
+    row:2
+    Button:
+        text:"A"
+    Button:
+        text:"B"
+    Button:
+        text:"C"
+    Button:
+        text:"D"
+    Button:
+        text:"E"
+    MainAnchorLayout:
+
+<MainAnchorLayout>:
+    anchor_x: "right"
+    anchor_y: "bottom"
+
+    BoxLayout:
+        size_hint: 1,1
+        Button:
+            text: "A"
+        Button:
+            text: "B"
+
+<MainBoxLayout>:
+    orientation: "vertical"
+    Button:
+        text:"1"
+        size_hint: .5, .5
+        pos_hint: {"y": .5}
+    BoxLayout:
+        Button:
+            text: "A"
+        Button:
+            text: "B"
+        Button:
+            text: "C"
+    Button:
+        text:"3"
+
+<MainWidget>:
+    Button:
+        text: "Menu"
+        size: 300,100
+        pos: 250,250
+        color: 1,0,0,1
